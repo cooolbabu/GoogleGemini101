@@ -4,6 +4,7 @@
 [Visualizing embedding similarity from text documents using t-SNE plots](https://cloud.google.com/vertex-ai/docs/generative-ai/tutorials)
 
 ### Links
+- [Getting Started with Gemini AI](https://ai.google.dev/docs#get-started-with-the-gemini-api)
 - [Vertex AI SDK for Python - GitHub repo](https://github.com/googleapis/python-aiplatform)
 - [Vertext AI Documentation](https://cloud.google.com/vertex-ai/docs)
 
