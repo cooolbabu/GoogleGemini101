@@ -10,3 +10,4 @@
 - [Voices REST API](https://cloud.google.com/text-to-speech/docs/reference/rest/v1/voices/list)
 - [Record audio from your microphone](https://colab.research.google.com/drive/1Z6VIRZ_sX314hyev3Gm5gBqvm1wQVo-a)
   * A copy is saved in this folder
+  * [Creating a Speech to Text Program with Python](https://www.youtube.com/watch?v=LEDpgye3bf4)
