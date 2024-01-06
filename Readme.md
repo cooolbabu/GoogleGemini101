@@ -9,6 +9,7 @@
 - [Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
 - [Vertex AI Code Samples](https://cloud.google.com/vertex-ai/docs/samples)
 - [LangChain on Google AI](https://cloud.google.com/vertex-ai/docs/generative-ai/learn-resources#langchain_%F0%9F%A6%9C%EF%B8%8F%F0%9F%94%97)
+- [Google Colab Gemini AI Notebooks](https://github.com/googlecolab/colabtools/tree/main/notebooks)
 
 
 ### Pre-reqs
