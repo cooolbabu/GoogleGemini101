@@ -31,7 +31,7 @@ from pyspark.sql.types import StructType, StructField, StringType, LongType, Int
     Do not include introductory line the respoonse.
 
 # COMMAND ----------
-
+# MAGIC %md
 # MAGIC * ## Instructions
 # MAGIC I will give you schema for a table. Your task is to provide pyspark code to create the table. 
   orders_bronze table schema
