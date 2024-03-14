@@ -4,6 +4,7 @@
 # MAGIC # Summary
 # MAGIC The code creates a schema for the orders_bronze table using StructType and StructField classes from pyspark.sql.types, and then creates the table using createOrReplaceTempView method.
 
+
 # MAGIC %md
 # MAGIC # Code
 
