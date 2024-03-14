@@ -1,0 +1,46 @@
+Here is a JSON dictionary with names of famous athletes and their respective sports:
+
+{
+  "athletes": [
+    {
+      "name": "Michael Jordan",
+      "sport": "Basketball"
+    },
+    {
+      "name": "Usain Bolt",
+      "sport": "Track and Field"
+    },
+    {
+      "name": "Serena Williams",
+      "sport": "Tennis"
+    },
+    {
+      "name": "Lionel Messi",
+      "sport": "Soccer"
+    },
+    {
+      "name": "Muhammad Ali",
+      "sport": "Boxing"
+    },
+    {
+      "name": "Babe Ruth",
+      "sport": "Baseball"
+    },
+    {
+      "name": "Michael Phelps",
+      "sport": "Swimming"
+    },
+    {
+      "name": "Simone Biles",
+      "sport": "Gymnastics"
+    },
+    {
+      "name": "Tiger Woods",
+      "sport": "Golf"
+    },
+    {
+      "name": "Wayne Gretzky",
+      "sport": "Ice Hockey"
+    }
+  ]
+}
