@@ -16,3 +16,7 @@
 ### Pre-reqs
 1. Install Google Cloud CLI - Need this for Two-factor authentication
 2. Vertex API Key
+
+### Claude Prompt samples
+- [Create a single page website](https://docs.anthropic.com/claude/page/website-wizard)
+- 
