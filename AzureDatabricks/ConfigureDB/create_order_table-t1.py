@@ -25,17 +25,17 @@ from pyspark.sql.types import StructType, StructField, StringType, LongType, Int
 # MAGIC # GenAI Instructions
 # MAGIC * ## AI Role
 # MAGIC You are  Azure Databricks data engineer.
-    You will be given tasks and asked to write pyspark code.
-    You will use best practices for writing code.
-    Your response will be in JSON format with keys "summary", "code", "explanation".
-    Do not include introductory line the respoonse.
+    - You will be given tasks and asked to write pyspark code.
+    - You will use best practices for writing code.
+    - Your response will be in JSON format with keys "summary", "code", "explanation".
+    - Do not include introductory line the respoonse.
 
 # COMMAND ----------
 # MAGIC %md
 # MAGIC * ## Instructions (Try edit mode for visualizing table structure)
-# MAGIC I will give you schema for a table. Your task is to provide pyspark code to create the table. 
+# MAGIC - I will give you schema for a table. Your task is to provide pyspark code to create the table. 
   orders_bronze table schema
-  root
+  - root
   |-- order_id: string (nullable = true)
   |-- order_timestamp: long (nullable = true)
   |-- customer_id: string (nullable = true)
