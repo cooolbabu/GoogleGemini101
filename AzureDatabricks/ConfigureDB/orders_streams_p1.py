@@ -34,7 +34,8 @@ orders_bronze_df = (spark.readStream.format('cloudFiles')
     .trigger(availableNow=True)
     .toTable(target_table)
 )
-# MAGIC %md #MAGIC ## Explanation
+# MAGIC %md 
+# MAGIC ## Explanation
 This code initializes a Spark session and sets up the ingestion of data from the specified input folder using the AutoLoader feature. The data is read in parquet format, and schema evolution is enabled to add new columns as they appear in the source data. The file_name and processed_timestamp columns are appended to the DataFrame. The data is then written to the orders_bronze table in append mode, with a checkpoint location specified for fault tolerance. The trigger option 'availableNow' is used to process the available files immediately.# MAGIC %md
 # MAGIC ##Part 2: Writing Orders_Silver Table from Orders_Bronze and Customers
 # COMMAND ----------
