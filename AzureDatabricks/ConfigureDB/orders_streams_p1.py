@@ -6,6 +6,10 @@
 # MAGIC %md
 # MAGIC ##Part 1: Ingesting Data into Orders_Bronze Table
 # COMMAND ----------
+# MAGIC %md
+# MAGIC ## Explanation
+This code initializes a Spark session and sets up the ingestion of data from the specified input folder using the AutoLoader feature. The data is read in parquet format, and schema evolution is enabled to add new columns as they appear in the source data. The file_name and processed_timestamp columns are appended to the DataFrame. The data is then written to the orders_bronze table in append mode, with a checkpoint location specified for fault tolerance. The trigger option 'availableNow' is used to process the available files immediately.
+# COMMAND ----------
 from pyspark.sql.functions import input_file_name, current_timestamp
 from pyspark.sql import SparkSession
 
@@ -34,12 +38,13 @@ orders_bronze_df = (spark.readStream.format('cloudFiles')
     .trigger(availableNow=True)
     .toTable(target_table)
 )
-
 # COMMAND ----------
-# MAGIC %md 
-# MAGIC ## Explanation
-This code initializes a Spark session and sets up the ingestion of data from the specified input folder using the AutoLoader feature. The data is read in parquet format, and schema evolution is enabled to add new columns as they appear in the source data. The file_name and processed_timestamp columns are appended to the DataFrame. The data is then written to the orders_bronze table in append mode, with a checkpoint location specified for fault tolerance. The trigger option 'availableNow' is used to process the available files immediately.# MAGIC %md
+# MAGIC %md
 # MAGIC ##Part 2: Writing Orders_Silver Table from Orders_Bronze and Customers
+# COMMAND ----------
+# MAGIC %md
+# MAGIC ## Explanation
+This code reads the orders_bronze table as a stream and creates a temporary streaming view. It then loads the customers table and performs a SQL join between the streaming view and the customers table on the customer_id column. The join extracts first_name and last_name from the profile JSON column. It filters out rows with a quantity of 0 or less. The resulting DataFrame is written to the orders_silver table in append mode with a checkpoint location specified. The trigger option 'availableNow' is used to process the available data immediately.
 # COMMAND ----------
 from pyspark.sql.functions import from_json, col
 
@@ -74,9 +79,13 @@ orders_silver_df = spark.sql("""
     .trigger(availableNow=True)
     .toTable(orders_silver_table)
 )
-# MAGIC %md #MAGIC ## Explanation
-This code reads the orders_bronze table as a stream and creates a temporary streaming view. It then loads the customers table and performs a SQL join between the streaming view and the customers table on the customer_id column. The join extracts first_name and last_name from the profile JSON column. It filters out rows with a quantity of 0 or less. The resulting DataFrame is written to the orders_silver table in append mode with a checkpoint location specified. The trigger option 'availableNow' is used to process the available data immediately.# MAGIC %md
+# COMMAND ----------
+# MAGIC %md
 # MAGIC ##Part 3: Populating Sales_by_Author Table from Orders_Silver
+# COMMAND ----------
+# MAGIC %md
+# MAGIC ## Explanation
+This code reads the orders_silver table as a stream and explodes the books array to flatten the book details. It then joins the resulting DataFrame with the books table to enrich the book items with the author information. The data is grouped by author, and the total sales amount and quantity are aggregated. The aggregated data is written to the sales_by_author table using the complete output mode, which is suitable for aggregations. A checkpoint location is specified for fault tolerance, and the trigger option 'availableNow' is used to process the available data immediately.
 # COMMAND ----------
 from pyspark.sql.functions import explode, col, sum as _sum
 
@@ -107,11 +116,13 @@ sales_by_author_df = sales_df.groupBy('author')
     .trigger(availableNow=True)
     .toTable(sales_by_author_table)
 )
-# MAGIC %md #MAGIC ## Explanation
-This code reads the orders_silver table as a stream and explodes the books array to flatten the book details. It then joins the resulting DataFrame with the books table to enrich the book items with the author information. The data is grouped by author, and the total sales amount and quantity are aggregated. The aggregated data is written to the sales_by_author table using the complete output mode, which is suitable for aggregations. A checkpoint location is specified for fault tolerance, and the trigger option 'availableNow' is used to process the available data immediately.
-    
+
+# COMMAND ----------
 # MAGIC %md
 # MAGIC # GenAI Instructions
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC * ## System message to AI
 # MAGIC   * You are  Azure Databricks data engineer.
     - You will be given tasks and asked to write pyspark code.
