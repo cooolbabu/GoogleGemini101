@@ -1,0 +1,109 @@
+erDiagram
+    Album {
+        integer AlbumId PK
+        varchar Title
+        integer ArtistId FK
+    }
+
+    Artist {
+        integer ArtistId PK
+        varchar Name
+    }
+
+    Customer {
+        integer CustomerId PK
+        varchar FirstName
+        varchar LastName
+        varchar Company
+        varchar Address
+        varchar City
+        varchar State
+        varchar Country
+        varchar PostalCode
+        varchar Phone
+        varchar Fax
+        varchar Email
+        integer SupportRepId FK
+    }
+
+    Employee {
+        integer EmployeeId PK
+        varchar LastName
+        varchar FirstName
+        varchar Title
+        integer ReportsTo FK
+        datetime BirthDate
+        datetime HireDate
+        varchar Address
+        varchar City
+        varchar State
+        varchar Country
+        varchar PostalCode
+        varchar Phone
+        varchar Fax
+        varchar Email
+    }
+
+    Genre {
+        integer GenreId PK
+        varchar Name
+    }
+
+    Invoice {
+        integer InvoiceId PK
+        integer CustomerId FK
+        datetime InvoiceDate
+        varchar BillingAddress
+        varchar BillingCity
+        varchar BillingState
+        varchar BillingCountry
+        varchar BillingPostalCode
+        numeric Total
+    }
+
+    InvoiceLine {
+        integer InvoiceLineId PK
+        integer InvoiceId FK
+        integer TrackId FK
+        numeric UnitPrice
+        integer Quantity
+    }
+
+    MediaType {
+        integer MediaTypeId PK
+        varchar Name
+    }
+
+    Playlist {
+        integer PlaylistId PK
+        varchar Name
+    }
+
+    PlaylistTrack {
+        integer PlaylistId FK
+        integer TrackId FK
+        constraint PK_PlaylistTrack PRIMARY
+    }
+
+    Track {
+        integer TrackId PK
+        varchar Name
+        integer AlbumId FK
+        integer MediaTypeId FK
+        integer GenreId FK
+        varchar Composer
+        integer Milliseconds
+        integer Bytes
+        numeric UnitPrice
+    }
+
+    Album ||--o{ Artist : "ArtistId"
+    Customer ||--o{ Employee : "SupportRepId"
+    Invoice ||--o{ Customer : "CustomerId"
+    InvoiceLine ||--o{ Invoice : "InvoiceId"
+    InvoiceLine ||--o{ Track : "TrackId"
+    PlaylistTrack ||--o{ Playlist : "PlaylistId"
+    PlaylistTrack ||--o{ Track : "TrackId"
+    Track ||--o{ Album : "AlbumId"
+    Track ||--o{ MediaType : "MediaTypeId"
+    Track ||--o{ Genre : "GenreId"
