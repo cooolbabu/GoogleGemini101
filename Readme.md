@@ -20,3 +20,6 @@
 ### Claude Prompt samples
 - [Create a single page website](https://docs.anthropic.com/claude/page/website-wizard)
 - 
+
+## A good reads
+-[A lazy Data science guide](https://mohitmayank.com/a_lazy_data_science_guide/)
